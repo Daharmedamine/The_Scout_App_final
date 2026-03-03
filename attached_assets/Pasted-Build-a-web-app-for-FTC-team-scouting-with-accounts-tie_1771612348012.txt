@@ -1,0 +1,111 @@
+Build a web app for **FTC team scouting** with accounts tied to a team number.
+
+## Core goal
+
+FTC teams can **log in from any device**, create scouting entries for other teams during matches, and **store everything in a database** so it’s accessible anywhere.
+
+## Authentication
+
+* Start with a **Login page**:
+
+  * Inputs: **Team Number** + **Password**
+  * Button: **Log In**
+  * Link: **Sign Up**
+* **Sign Up page**:
+
+  * Inputs: Team Number, Team Name (optional), Password, Confirm Password
+  * Create an account for the team
+* Passwords must be **securely stored (hashed)**.
+* After login, users land on a dashboard.
+
+## Database & Sync
+
+* Use a database to store:
+
+  * Team accounts (team number, hashed password, metadata)
+  * Scouting reports created by that team
+* All scouting reports are linked to the **owner team number** (the team that created the report).
+* Because data is in a database, the same team can log in from any device and see their data.
+
+## Scouting workflow
+
+After logging in, users can:
+
+1. Click **“New Scout”**
+2. Enter the **Scouted Team Number**
+3. Fill a scouting form with these sections/fields:
+
+### Autonomous Section
+
+* Starting position (where do they perform better? Far or Close)
+* Preload action
+* Auto scoring (points, accuracy, cycles)
+* Navigation accuracy
+
+### Tele-Op Section
+
+* Cycles (of artifacts) / minute
+* Scoring accuracy (average score per match)
+* Consistency (scoring / # shots)
+* Mechanism performance (intake, shooter, arm, etc.)
+
+### Endgame Section
+
+* Endgame task completion
+* Reliability
+* Time to complete
+* Penalties taken
+
+### Robot Performance Metrics
+
+* Speed
+* Reliability
+* Defense ability
+* Driver skill
+
+### Optional
+
+* Weight
+
+### Other
+
+* Strong and weak suits
+* Better at defence or shooting?
+
+## Saving & viewing
+
+* Button: **Save Report**
+* After saving, show confirmation and return to a list view:
+
+  * “My Scouting Reports”
+  * Filters/search by scouted team number
+  * Click any report to view full details
+  * Option to edit or delete (owner team only)
+
+## Sharing with other teams
+
+* Feature: **Share Report**
+
+  * Input: “Other Team Number”
+  * When shared, that other team can see the report after logging in.
+* Permissions:
+
+  * Owner team can edit/delete
+  * Shared teams can view (read-only)
+
+## UI pages (minimum)
+
+* Login
+* Sign Up
+* Dashboard
+* New Scout Form
+* Report List
+* Report Detail View
+* Share dialog/page
+
+## Tech expectations
+
+* Use a modern stack (any is fine): frontend + backend + database.
+* Make it responsive for phones/tablets (FTC pits).
+* Validate inputs (team numbers are numeric, required fields, etc.).
+* Keep the app simple, fast, and easy to use during competitions.

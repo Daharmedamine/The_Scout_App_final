@@ -1,0 +1,129 @@
+Add an AI-powered **Translate** feature to **The Scout App** that supports the **Top 20 most-used languages** (preloaded list).
+
+## Goal
+
+Users can translate:
+
+* Scouting reports
+* Robot profiles
+* AI analysis results
+* Competition summaries
+  into any of the 20 languages with one tap, while keeping numbers + structure correct.
+
+---
+
+## UI Changes
+
+### 1) Translate Button
+
+Add a **Translate** button on:
+
+* Report Details screen
+* Robot Profile screen
+* AI Results screen
+* Competition Analysis screen
+
+When tapped:
+
+* Open a modal:
+
+  * Dropdown: “Translate to…”
+  * Toggle: “Auto-translate on this screen” (optional)
+  * Button: “Translate”
+
+### 2) Language List (Top 20)
+
+Use a fixed list (no typing needed):
+
+1. English
+2. Spanish
+3. French
+4. German
+5. Portuguese
+6. Italian
+7. Dutch
+8. Russian
+9. Ukrainian
+10. Polish
+11. Turkish
+12. Arabic
+13. Hindi
+14. Bengali
+15. Urdu
+16. Indonesian
+17. Vietnamese
+18. Japanese
+19. Korean
+20. Chinese (Simplified)
+
+Store languages as codes:
+
+* en, es, fr, de, pt, it, nl, ru, uk, pl, tr, ar, hi, bn, ur, id, vi, ja, ko, zh-Hans
+
+---
+
+## Translation Rules (Must Follow)
+
+* Do NOT change: team numbers, scores, stats, percentages, formulas
+* Keep the same sections and headings order
+* Keep bullet points and formatting
+* Keep FTC/robotics terms accurate (don’t rewrite meanings)
+* Keep names (competition name, team name) unchanged unless user requests otherwise
+
+---
+
+## Backend Translation Endpoint
+
+Create:
+
+* `POST /api/translate`
+
+Input:
+
+* `contentType` (report | robot_profile | ai_result | comp_summary)
+* `contentId`
+* `targetLanguageCode`
+* `rawText` (or load by contentId on server)
+
+Output:
+
+* `translatedText`
+
+Important:
+
+* Call OpenAI from backend only (never from the mobile app)
+* Validate permissions: user must be allowed to view this content before translating
+
+---
+
+## Save Translations (Caching)
+
+Create DB table `translations` so repeat translations are instant:
+
+* id
+* owner_team_number
+* content_type
+* content_id
+* language_code
+* translated_text
+* created_at
+
+Flow:
+
+1. Check DB if translation exists → return it
+2. If not → call AI → save → return
+
+---
+
+## AI Prompt (Server Side)
+
+System message:
+“You translate FTC scouting content into {LANGUAGE}. Preserve structure and formatting. Do NOT change numbers, team numbers, stats, percentages, or formulas. Keep robotics terms accurate and clear.”
+
+---
+
+## Extra (Optional but Great)
+
+* Add a user setting: “Preferred Language”
+* If set, automatically show pages in that language if translation exists
+* Allow sharing: original / translated / both

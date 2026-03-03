@@ -1,0 +1,139 @@
+Upgrade the FTC Scouting App by adding two major features:
+
+1) **AI Analysis Tab**
+2) **Competition Management System**
+
+The goal is to create a smart scouting platform that not only stores data, but also analyzes it and helps teams build the best alliances.
+
+--------------------------------------------------
+AI TAB – Robot Profile + Smart Alliance Suggestions
+--------------------------------------------------
+
+Create a new tab called **AI**.
+
+When a team opens the AI tab for the first time, it should guide them through initializing their robot profile:
+
+STEP 1 – Robot Initialization
+The AI should ask:
+- Describe your robot (type, strategy, strengths, weaknesses)
+- Upload a picture of your robot
+- Enter your full scouting data (same structure as scouting form)
+- Preferred strategy (offense-heavy, defense-heavy, balanced, cycle-focused, endgame-focused, etc.)
+
+This creates a **Robot Profile** stored in the database.
+
+STEP 2 – AI Intelligence Access
+The AI must have access to:
+- All teams scouted by the user
+- All competition-specific scouting databases
+- Robot profile data
+- Performance metrics and trends
+
+STEP 3 – Alliance Compatibility Engine
+The AI should:
+- Analyze compatibility between your robot and other teams
+- Suggest best alliance partners
+- Explain WHY they are compatible (cycle speed match, defensive coverage, endgame complement, etc.)
+- Detect role gaps (example: “You need a strong defender”)
+- Rank alliance partners (Top 3 suggestions)
+
+STEP 4 – Competition-Specific Analysis
+When inside AI tab:
+- User selects: “I am in Competition X”
+- AI analyzes all scouted teams in that competition
+- Suggests:
+  - Best alliance partners
+  - Biggest threats
+  - Dark horse teams
+  - Strategic recommendations
+  - Match strategy suggestions
+
+The AI should also generate:
+- Competition overview report
+- Top offensive teams
+- Top defensive teams
+- Most reliable teams
+- Risk analysis
+- Predicted alliance synergy matrix
+
+--------------------------------------------------
+COMPETITION TAB – Event Workspaces
+--------------------------------------------------
+
+Create a new tab called **Competitions**.
+
+Feature 1 – Create Competition
+- Button: “Create Competition”
+- Inputs:
+  - Competition Name
+  - FTC Event Link (official event page)
+
+When link is submitted, AI should:
+- Extract participating team numbers
+- Extract team names
+- Extract logos if available
+- Store competition metadata
+- Create a dedicated competition workspace
+
+Feature 2 – Competition Workspace
+Each competition should have:
+- List of all participating teams
+- Scouting progress tracker
+- Team performance summary board
+- Shared/private scouting filter
+- Analytics dashboard
+
+--------------------------------------------------
+SCOUTING INTEGRATION WITH COMPETITIONS
+--------------------------------------------------
+
+When creating a new scouting report:
+- Ask: “Add to an existing competition?”
+- Show list of created competitions
+- User selects competition
+- Team being scouted must match competition team list (if available)
+
+Before saving a scouting report:
+- Ask:
+  - Keep Private (only your team)
+  - Share with Competition
+  - Share with Specific Team Number
+
+Reports inside competitions become part of that competition database.
+
+--------------------------------------------------
+AI + COMPETITION DATA INTEGRATION
+--------------------------------------------------
+
+AI must be able to:
+- Access all scouting data inside a competition
+- Compare all teams
+- Generate advanced analytics
+- Provide real-time strategy advice
+- Suggest pick order for alliance selection
+- Simulate alliance combinations
+- Identify statistical synergy
+
+--------------------------------------------------
+Advanced AI Features (Optional but Recommended)
+--------------------------------------------------
+
+- Role classification (Offense / Defense / Hybrid / Endgame Specialist)
+- Performance consistency scoring
+- Reliability index
+- Compatibility scoring system (0–100)
+- Visual analytics charts
+- Alliance simulator tool
+
+--------------------------------------------------
+Technical Expectations
+--------------------------------------------------
+
+- Secure database structure (teams, competitions, reports, robot profiles)
+- AI must query structured data
+- Mobile-friendly UI
+- Clean dashboard layout
+- Fast performance for competition environments
+
+Goal:
+Transform this from a simple scouting app into a **full FTC Competition Intelligence Platform** powered by AI.
